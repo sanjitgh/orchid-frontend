@@ -16,7 +16,7 @@ const AddMovie = () => {
     // image validation
     const urlRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/\S*)?$/;
     if (!urlRegex.test(image)) {
-      return toast.error("You need to add image URL.", {
+      return toast.error("You need to add valid image URL.", {
         style: {
           boxShadow: "5px 0 px 5px 0px #0E7490",
           color: "#0E7490",
@@ -103,7 +103,7 @@ const AddMovie = () => {
           Swal.fire({
             position: "top-center",
             icon: "success",
-            title: "Successfully Added",
+            title: "Movie Successfully Added",
             showConfirmButton: false,
             timer: 1500,
           });
