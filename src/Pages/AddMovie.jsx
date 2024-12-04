@@ -1,8 +1,9 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const AddMovie = () => {
   const handelAddMovie = (e) => {
-
     e.preventDefault();
     const form = e.target;
     const image = form.image.value;
@@ -12,13 +13,73 @@ const AddMovie = () => {
     const year = form.year.value;
     const rating = form.rating.value;
     const summery = form.summery.value;
-
     // image validation
     const urlRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/\S*)?$/;
-    if(!urlRegex.test(image)){
-      alert("provide image")
+    if (!urlRegex.test(image)) {
+      return toast.error("You need to add image URL.", {
+        style: {
+          boxShadow: "5px 0 px 5px 0px #0E7490",
+          color: "#0E7490",
+          fontWeight: "500",
+        },
+      });
     }
-    const details = {
+
+    // title validation
+    if (title.length < 2) {
+      return toast.error("You need to add at least two character.", {
+        style: {
+          boxShadow: "5px 0 px 5px 0px #0E7490",
+          color: "#0E7490",
+          fontWeight: "500",
+        },
+      });
+    }
+
+    // duration validation
+    if (parseInt(duration) < 60) {
+      return toast.error("Duration will be at least 60 minues.", {
+        style: {
+          boxShadow: "5px 0 px 5px 0px #0E7490",
+          color: "#0E7490",
+          fontWeight: "500",
+        },
+      });
+    }
+
+    // year validation
+    if (!parseInt(year)) {
+      return toast.error("Provide Release Year", {
+        style: {
+          boxShadow: "5px 0 px 5px 0px #0E7490",
+          color: "#0E7490",
+          fontWeight: "500",
+        },
+      });
+    }
+
+    // rating validation
+    if (parseInt(rating) > 5) {
+      return toast.error("You can add maximum 5 star", {
+        style: {
+          boxShadow: "5px 0 px 5px 0px #0E7490",
+          color: "#0E7490",
+          fontWeight: "500",
+        },
+      });
+    }
+    // summery validation
+    if (summery.length < 10) {
+      return toast.error("Provide minimum 10 character.", {
+        style: {
+          boxShadow: "5px 0 px 5px 0px #0E7490",
+          color: "#0E7490",
+          fontWeight: "500",
+        },
+      });
+    }
+
+    const movies = {
       image,
       title,
       genre,
@@ -28,7 +89,27 @@ const AddMovie = () => {
       summery,
     };
 
-    console.log(details);
+    // send data mongodb
+    fetch("http://localhost:5000/movies", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(movies),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Successfully Added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          form.reset();
+        }
+      });
   };
 
   return (
@@ -54,6 +135,7 @@ const AddMovie = () => {
               autoComplete="off"
               type="text"
               placeholder="Poster image link"
+              required
               className="input input-bordered w-full border-white bg-transparent focus:border-white focus:outline-none rounded-none placeholder-gray-300"
             />
           </label>
@@ -69,6 +151,7 @@ const AddMovie = () => {
               name="title"
               type="text"
               autoComplete="off"
+              required
               placeholder="Title"
               className="input input-bordered w-full border-white bg-transparent focus:border-white focus:outline-none rounded-none placeholder-gray-300"
             />
@@ -103,9 +186,10 @@ const AddMovie = () => {
             </div>
             <input
               name="duration"
-              type="text"
+              type="number"
               autoComplete="off"
-              placeholder="Duration in minutes"
+              required
+              placeholder="Duration as minutes"
               className="input input-bordered w-full border-white bg-transparent focus:border-white focus:outline-none rounded-none placeholder-gray-300"
             />
           </label>
@@ -121,9 +205,7 @@ const AddMovie = () => {
               name="year"
               className="select select-bordered w-full border-white bg-transparent focus:border-white focus:outline-none rounded-none placeholder-gray-300"
             >
-              <option disabled className="text-black">
-                Add Release year
-              </option>
+              <option className="text-black">Add Release year</option>
               <option className="text-black">2010</option>
               <option className="text-black">2011</option>
               <option className="text-black">2012</option>
@@ -149,8 +231,9 @@ const AddMovie = () => {
             </div>
             <input
               name="rating"
-              type="text"
+              type="number"
               autoComplete="off"
+              required
               placeholder="Rating 1 to 5 Star"
               className="input input-bordered w-full border-white bg-transparent focus:border-white focus:outline-none rounded-none placeholder-gray-300"
             />
@@ -163,6 +246,7 @@ const AddMovie = () => {
             </div>
             <textarea
               name="summery"
+              required
               className="input input-bordered w-full border-white bg-transparent focus:border-white focus:outline-none rounded-none placeholder-gray-300 h-32 p-4"
               placeholder="Detaile"
             ></textarea>
