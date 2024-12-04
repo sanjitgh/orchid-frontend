@@ -2,25 +2,41 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
-import Logout from "../Pages/Logout";
+import Register from "../Pages/Register";
+import AllMovies from "../Pages/AllMovies";
+import AddMovie from "../Pages/AddMovie";
+import MyFevourite from "../Pages/MyFevourite";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     children: [
-        {
-            path: "/",
-            element: <Home></Home>
-        },
-        {
-            path: "/login",
-            element: <Login></Login>
-        },
-        {
-            path: "/",
-            element: <Logout></Logout>
-        }
-    ]
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/allmovies",
+        element: <AllMovies></AllMovies>
+      },
+      {
+        path: "/addmovie",
+        element: <AddMovie></AddMovie>
+      },
+      {
+        path: "/myfevourite",
+        element: <MyFevourite></MyFevourite>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
   },
 ]);
 
