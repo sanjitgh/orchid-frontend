@@ -1,11 +1,52 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { MdFavoriteBorder, MdDeleteForever } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const MovieDetails = () => {
   const { _id, image, title, genre, duration, rating, year, summery } =
     useLoaderData();
+    const navigate = useNavigate()
+
+  const handelDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "If you click confirm your item delete permanently!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#0E7490",
+      cancelButtonColor: "#ef4444",
+      confirmButtonText: "Confirem",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/movies/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "The movie has been deleted successfully.",
+                icon: "success",
+              });
+              navigate("/allmovies")
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div className="py-14 bg-cyan-50">
       <div className="container mx-auto px-3">
+        <div className="text-end mb-14">
+          <Link
+            className="border-b border-cyan-700 text-cyan-700 font-semibold"
+            to={"/allmovies"}
+          >
+            SEE MOVIES
+          </Link>
+        </div>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <div>
             <h1 className="font-semibold text-3xl mb-5">{title}</h1>
@@ -40,9 +81,26 @@ const MovieDetails = () => {
               </table>
             </div>
             <p className="text-base text-gray-600">
-              <span className="font-medium text-lg text-gray-800">Description : <br /></span>
+              <span className="font-medium text-lg text-gray-800">
+                Description : <br />
+              </span>
               {summery}
             </p>
+            <div className="flex items-center mt-8 gap-5">
+              <div className="tooltip" data-tip="Add Favorite">
+                <Link className="btn bg-transparent hover:bg-transparent text-cyan-700 hover:border-cyan-800 border-cyan-700 text-2xl">
+                  <MdFavoriteBorder />
+                </Link>
+              </div>
+              <div className="tooltip" data-tip="Delete">
+                <Link
+                  onClick={() => handelDelete(_id)}
+                  className="btn bg-red-500 hover:bg-red-600 text-white text-2xl"
+                >
+                  <MdDeleteForever />
+                </Link>
+              </div>
+            </div>
           </div>
           <div>
             <img className="w-full object-cover" src={image} alt="" />

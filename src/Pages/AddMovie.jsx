@@ -70,7 +70,7 @@ const AddMovie = () => {
     }
     // summery validation
     if (summery.length < 10) {
-      return toast.error("Provide minimum 10 character.", {
+      return toast.error("Summery will be minimum 10 character.", {
         style: {
           boxShadow: "5px 0 px 5px 0px #0E7490",
           color: "#0E7490",

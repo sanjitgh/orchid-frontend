@@ -3,13 +3,62 @@ import { Link, NavLink } from "react-router-dom";
 const Header = () => {
   const links = (
     <>
-      <NavLink to={"/"}>Home</NavLink>
-      <NavLink to={"/allmovies"}>All Movies</NavLink>
-      <NavLink to={"/addmovie"}>Add Movie</NavLink>
-      <NavLink to={"/myfevourite"}>My Fevourite</NavLink>
-      <NavLink to={"/"}>Extra</NavLink>
-      <NavLink to={"/login"}>Login</NavLink>
-      <NavLink to={"/register"}>Register</NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b" : ""
+        }
+        to={"/"}
+      >
+        Home
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b" : ""
+        }
+        to={"/allmovies"}
+      >
+        All Movies
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b" : ""
+        }
+        to={"/addmovie"}
+      >
+        Add Movie
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b" : ""
+        }
+        to={"/myfevourite"}
+      >
+        My Fevourite
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b" : ""
+        }
+        to={"/blog"}
+      >
+        Blog
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b" : ""
+        }
+        to={"/login"}
+      >
+        Login
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b" : ""
+        }
+        to={"/register"}
+      >
+        Register
+      </NavLink>
     </>
   );
   return (
@@ -39,7 +88,9 @@ const Header = () => {
             {links}
           </ul>
         </div>
-        <Link to={"/"} className="text-3xl font-bold logo">Orchid</Link>
+        <Link to={"/"} className="text-3xl font-bold logo">
+          Orchid
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-5 font-medium">{links}</ul>

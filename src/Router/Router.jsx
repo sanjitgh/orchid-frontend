@@ -7,15 +7,19 @@ import AllMovies from "../Pages/AllMovies";
 import AddMovie from "../Pages/AddMovie";
 import MyFevourite from "../Pages/MyFevourite";
 import MovieDetails from "../components/MovieDetails";
+import ErrorPage from "../Pages/ErrorPage";
+import Blog from "../Pages/Blog";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage></ErrorPage>,
     element: <MainLayout></MainLayout>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/movies"),
       },
       {
         path: "/allmovies",
@@ -26,7 +30,7 @@ const router = createBrowserRouter([
         path: "/allmovies/moviedetails/:id",
         element: <MovieDetails></MovieDetails>,
         loader: ({ params }) =>
-           fetch(`http://localhost:5000/movies/${params.id}`),
+          fetch(`http://localhost:5000/movies/${params.id}`),
       },
       {
         path: "/addmovie",
@@ -35,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/myfevourite",
         element: <MyFevourite></MyFevourite>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
         path: "/login",
