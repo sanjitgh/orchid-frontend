@@ -15,7 +15,7 @@ const Banner = () => {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide>
           <div className="bg-[url('https://i.ibb.co.com/VMNFRq9/71-AX0-J-Iq-L.jpg')] bg-center bg-cover bg-no-repeat min-h-[750px] relative flex justify-center items-center">
-            <div class="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
             <div className="z-10 text-white text-center">
               <h1 className="font-bold md:text-5xl text-2xl mb-5">
                 Venom: The Last Dance
@@ -30,7 +30,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="bg-[url('https://i.ibb.co.com/mFfjxD8/3-JCa-Eki-Sw-WKAwg-LMjp-Ch-F3-1200-80.jpg')] bg-center bg-cover bg-no-repeat min-h-[750px] relative flex justify-center items-center">
-            <div class="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
             <div className="z-10 text-white text-center">
               <h1 className="font-bold md:text-5xl text-2xl mb-5">
                 Spider-Man: No Way Home
@@ -45,7 +45,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="bg-[url('https://i.ibb.co.com/9YkqMjJ/fast-x-poster-header.jpg')] bg-center bg-cover bg-no-repeat min-h-[750px] relative flex justify-center items-center">
-            <div class="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
             <div className="z-10 text-white text-center">
               <h1 className="font-bold md:text-5xl text-2xl mb-5">Fast X</h1>
               <p className="text-gray-300 max-w-[800px] mx-auto">

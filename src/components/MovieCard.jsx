@@ -1,11 +1,12 @@
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
-  const { image, title, genre, duration, rating, year } = movie;
+  const { _id, image, title, genre, duration, rating, year } = movie;
 
   return (
-    <div className="shadow-[#38e8ff2e] shadow-xl hover:scale-[1.01] hover:transition-all">
+    <div className="shadow-[#38e8ff2e] shadow-xl">
       <img
         className="w-full max-h-[550px] object-cover mb-4"
         src={image}
@@ -39,7 +40,12 @@ const MovieCard = ({ movie }) => {
             />
           </span>
         </h1>
-        <button className="btn mt-5 bg-cyan-700 hover:bg-cyan-800 text-white text-base">See Details</button>
+        <Link
+          to={`moviedetails/${_id}`}
+          className="btn mt-5 bg-cyan-700 hover:bg-cyan-800 text-white text-base"
+        >
+          See Details
+        </Link>
       </div>
     </div>
   );
