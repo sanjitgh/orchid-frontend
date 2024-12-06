@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provaider/AuthProvaider";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const { handelLogout, user } = useContext(AuthContext);
@@ -48,7 +49,7 @@ const Header = () => {
       </NavLink>
 
       {user ? (
-        <NavLink onClick={handelLogout}>Logout</NavLink>
+        ""
       ) : (
         <div className="flex flex-col lg:flex-row gap-3">
           <NavLink
@@ -108,7 +109,31 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">User</a>
+        {user ? (
+          <div className="relative text-2xl cursor-pointer group">
+            <img
+              className="rounded-full w-10 h-10"
+              src={user?.photoURL}
+              alt="profile-photo"
+            />
+
+            <div className="absolute bg-cyan-700 px-5 py-3 top-[60px] -right-8 w-56 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <h2 className="text-lg font-medium mb-3">
+                {user && user?.displayName}
+              </h2>
+              <button
+                onClick={handelLogout}
+                className="bg-red-600 text-base px-5 py-2 cursor-pointer rounded-sm"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="text-2xl cursor-pointer">
+            <FaUser></FaUser>
+          </div>
+        )}
       </div>
     </div>
   );

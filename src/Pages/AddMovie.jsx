@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provaider/AuthProvaider";
 
 const AddMovie = () => {
+  const user = useContext(AuthContext)
+  console.log(user.user.email);
   const handelAddMovie = (e) => {
     e.preventDefault();
     const form = e.target;

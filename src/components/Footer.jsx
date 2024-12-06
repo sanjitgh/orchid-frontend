@@ -50,7 +50,7 @@ const Footer = () => {
             <Link to={""} className="text-base font-normal hover:text-gray-200 transition-all">
               Newsletter
             </Link>
-            <Link to={"/"} className="text-base font-normal hover:text-gray-200 transition-all">
+            <Link to={"/blog"} className="text-base font-normal hover:text-gray-200 transition-all">
               Blog
             </Link>
           </nav>

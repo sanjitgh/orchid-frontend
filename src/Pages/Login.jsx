@@ -26,7 +26,12 @@ const Login = () => {
 
   const handelLoginWithGoogle = () => {
     handelGoogleLogin().then((res) => {
-      navigate(location.state);
+      if(location.state){
+        navigate(location.state);
+      }
+      else{
+        navigate("/")
+      }
     });
   };
 
@@ -80,8 +85,8 @@ const Login = () => {
             </div>
             <div className="my-3">
               <h3 className="text-lg font-medium mb-3">Socail Link</h3>
-              <Link onClick={handelLoginWithGoogle} className="text-2xl">
-                <FaGoogle />
+              <Link onClick={handelLoginWithGoogle} className="text-base flex items-center gap-3">
+                Login With Google <FaGoogle  className="text-2xl"/>
               </Link>
             </div>
             <div className="form-control mt-6">

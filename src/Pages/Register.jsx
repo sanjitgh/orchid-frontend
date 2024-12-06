@@ -28,8 +28,26 @@ const Register = () => {
       return toast.error("You need at least one number letter.");
     }
 
+    const newUser = {
+      name, image, email
+    }
+
     createUser(email, password)
       .then((res) => {
+
+        // save user info to the database
+        fetch("http://localhost:5000/users",{
+          method: "POST",
+          headers:{
+            'content-type': "application/json",
+          },
+          body:JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+        })
+
         manageProfile(name, image);
         navigate("/");
       })
