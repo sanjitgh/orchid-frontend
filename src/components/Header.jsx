@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../provaider/AuthProvaider";
 
 const Header = () => {
+  const { handelLogout, user } = useContext(AuthContext);
   const links = (
     <>
       <NavLink
@@ -43,6 +46,7 @@ const Header = () => {
       >
         Blog
       </NavLink>
+      
       <NavLink
         className={({ isActive }) =>
           isActive ? "border-b-white border-b" : ""
@@ -59,6 +63,7 @@ const Header = () => {
       >
         Register
       </NavLink>
+      {user ? <NavLink onClick={handelLogout}>Logout</NavLink> : ""}
     </>
   );
   return (
@@ -93,7 +98,9 @@ const Header = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-5 font-medium">{links}</ul>
+        <ul className="menu menu-horizontal px-1 gap-5 font-medium items-center">
+          {links}
+        </ul>
       </div>
       <div className="navbar-end">
         <a className="btn">User</a>

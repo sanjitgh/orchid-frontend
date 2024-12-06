@@ -9,6 +9,7 @@ import MyFevourite from "../Pages/MyFevourite";
 import MovieDetails from "../components/MovieDetails";
 import ErrorPage from "../Pages/ErrorPage";
 import Blog from "../Pages/Blog";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -23,22 +24,38 @@ const router = createBrowserRouter([
       },
       {
         path: "/allmovies",
-        element: <AllMovies></AllMovies>,
+        element: (
+          <PrivetRoute>
+            <AllMovies></AllMovies>
+          </PrivetRoute>
+        ),
         loader: () => fetch("http://localhost:5000/movies"),
       },
       {
         path: "/allmovies/moviedetails/:id",
-        element: <MovieDetails></MovieDetails>,
+        element: (
+          <PrivetRoute>
+            <MovieDetails></MovieDetails>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/movies/${params.id}`),
       },
       {
         path: "/addmovie",
-        element: <AddMovie></AddMovie>,
+        element: (
+          <PrivetRoute>
+            <AddMovie></AddMovie>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/myfevourite",
-        element: <MyFevourite></MyFevourite>,
+        element: (
+          <PrivetRoute>
+            <MyFevourite></MyFevourite>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/blog",
