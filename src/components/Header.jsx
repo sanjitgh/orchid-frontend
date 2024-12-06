@@ -46,24 +46,29 @@ const Header = () => {
       >
         Blog
       </NavLink>
-      
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? "border-b-white border-b" : ""
-        }
-        to={"/login"}
-      >
-        Login
-      </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? "border-b-white border-b" : ""
-        }
-        to={"/register"}
-      >
-        Register
-      </NavLink>
-      {user ? <NavLink onClick={handelLogout}>Logout</NavLink> : ""}
+
+      {user ? (
+        <NavLink onClick={handelLogout}>Logout</NavLink>
+      ) : (
+        <div className="flex flex-col lg:flex-row gap-3">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "border-b-white border-b" : ""
+            }
+            to={"/login"}
+          >
+            Login
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "border-b-white border-b" : ""
+            }
+            to={"/register"}
+          >
+            Register
+          </NavLink>
+        </div>
+      )}
     </>
   );
   return (
