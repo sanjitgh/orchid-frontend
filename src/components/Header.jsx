@@ -35,9 +35,9 @@ const Header = () => {
         className={({ isActive }) =>
           isActive ? "border-b-white border-b" : ""
         }
-        to={"/myfevourite"}
+        to={"/myfavorite"}
       >
-        My Fevourite
+        My Favorite
       </NavLink>
       <NavLink
         className={({ isActive }) =>

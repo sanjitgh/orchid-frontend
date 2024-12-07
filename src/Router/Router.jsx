@@ -5,11 +5,12 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AllMovies from "../Pages/AllMovies";
 import AddMovie from "../Pages/AddMovie";
-import MyFevourite from "../Pages/MyFevourite";
+import MyFavorite from "../Pages/MyFavorite";
 import MovieDetails from "../components/MovieDetails";
 import ErrorPage from "../Pages/ErrorPage";
 import Blog from "../Pages/Blog";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import UpdateMovie from "../components/UpdateMovie";
 
 const router = createBrowserRouter([
   {
@@ -50,12 +51,19 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myfevourite",
+        path: "/myfavorite",
+        element: <MyFavorite></MyFavorite>,
+        loader: () => fetch("http://localhost:5000/favoritemovie"),
+      },
+      {
+        path: "/updatemovie/:id",
         element: (
           <PrivetRoute>
-            <MyFevourite></MyFevourite>
+            <UpdateMovie></UpdateMovie>
           </PrivetRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/movies/${params.id}`),
       },
       {
         path: "/blog",

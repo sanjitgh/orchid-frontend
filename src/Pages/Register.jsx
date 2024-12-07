@@ -4,7 +4,7 @@ import { AuthContext } from "../provaider/AuthProvaider";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, manageProfile } = useContext(AuthContext);
+  const { createUser, manageProfile, user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handelSignUp = (e) => {
@@ -28,27 +28,35 @@ const Register = () => {
       return toast.error("You need at least one number letter.");
     }
 
-    const newUser = {
-      name, image, email
-    }
-
     createUser(email, password)
       .then((res) => {
+        manageProfile(name, image).then((res) => {
+          setUser({
+            ...user,
+            displayName: name,
+            photoURL: image,
+            email: email,
+          });
+        });
 
+        const newUser = {
+          name,
+          image,
+          email,
+        };
         // save user info to the database
-        fetch("http://localhost:5000/users",{
+        fetch("http://localhost:5000/users", {
           method: "POST",
-          headers:{
-            'content-type': "application/json",
+          headers: {
+            "content-type": "application/json",
           },
-          body:JSON.stringify(newUser)
+          body: JSON.stringify(newUser),
         })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
 
-        manageProfile(name, image);
         navigate("/");
       })
       .catch((error) => {

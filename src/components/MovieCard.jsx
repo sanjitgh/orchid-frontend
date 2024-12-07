@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const { _id, image, title, genre, duration, rating, year } = movie;
-
+  
   return (
     <div className="shadow-[#38e8ff2e] shadow-xl">
       <img

@@ -1,12 +1,16 @@
-import { useContext, useState } from "react";
-import toast from "react-hot-toast";
+import React, { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provaider/AuthProvaider";
+import toast from "react-hot-toast";
 
-const AddMovie = () => {
-  const user = useContext(AuthContext)
+const UpdateMovie = () => {
+  const { _id, image, title, genre, duration, year, rating, summery } =
+    useLoaderData();
+    console.log(rating);
+  const user = useContext(AuthContext);
 
-  const handelAddMovie = (e) => {
+  const handelUpdateMovie = (e) => {
     e.preventDefault();
     const form = e.target;
     const image = form.image.value;
@@ -92,28 +96,31 @@ const AddMovie = () => {
       year,
       rating,
       summery,
-      currentUserEmail
+      currentUserEmail,
     };
 
     // send data mongodb
-    fetch("http://localhost:5000/movies", {
-      method: "POST",
+    fetch(`http://localhost:5000/movies/${_id}`, {
+      method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(movies),
     })
       .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
+      .then((result) => {
+        if (result.modifiedCount > 0) {
           Swal.fire({
-            position: "top-center",
+            title: "Good job!",
+            text: "Your movie is updated now!",
             icon: "success",
-            title: "Movie Successfully Added",
-            showConfirmButton: false,
-            timer: 1500,
           });
-          form.reset();
+        } else {
+          Swal.fire({
+            title: "Are your Sure?",
+            text: "You don't update any field",
+            icon: "question",
+          });
         }
       });
   };
@@ -122,7 +129,7 @@ const AddMovie = () => {
     <div className="min-h-[800px] flex justify-center items-center bg-[url('https://i.ibb.co.com/8ssfbBv/avengers-face-off.webp')] bg-center bg-cover bg-no-repeat relative">
       <div className="absolute inset-0 bg-black/90 flex items-center justify-center"></div>
       <form
-        onSubmit={handelAddMovie}
+        onSubmit={handelUpdateMovie}
         className="w-[1000px] mx-auto px-3 bg-cyan-700 shadow-[#38e8ff4d] shadow-xl text-white rounded z-10 my-16"
       >
         <h1 className="text-2xl md:text-5xl font-bold text-center pt-10 logo">
@@ -138,6 +145,7 @@ const AddMovie = () => {
             </div>
             <input
               name="image"
+              defaultValue={image}
               autoComplete="off"
               type="text"
               placeholder="Poster image link"
@@ -155,6 +163,7 @@ const AddMovie = () => {
             </div>
             <input
               name="title"
+              defaultValue={title}
               type="text"
               autoComplete="off"
               required
@@ -170,6 +179,7 @@ const AddMovie = () => {
             </div>
             <select
               name="genre"
+              defaultValue={genre}
               className="select select-bordered w-full border-white bg-transparent focus:border-white focus:outline-none rounded-none placeholder-gray-300"
             >
               <option disabled className="text-black">
@@ -192,6 +202,7 @@ const AddMovie = () => {
             </div>
             <input
               name="duration"
+              defaultValue={duration}
               type="number"
               autoComplete="off"
               required
@@ -209,6 +220,7 @@ const AddMovie = () => {
             </div>
             <select
               name="year"
+              defaultValue={year}
               className="select select-bordered w-full border-white bg-transparent focus:border-white focus:outline-none rounded-none placeholder-gray-300"
             >
               <option className="text-black">Add Release year</option>
@@ -237,6 +249,7 @@ const AddMovie = () => {
             </div>
             <input
               name="rating"
+              defaultValue={rating}
               type="number"
               autoComplete="off"
               required
@@ -252,6 +265,7 @@ const AddMovie = () => {
             </div>
             <textarea
               name="summery"
+              defaultValue={summery}
               required
               className="input input-bordered w-full border-white bg-transparent focus:border-white focus:outline-none rounded-none placeholder-gray-300 h-32 p-4"
               placeholder="Detaile"
@@ -263,7 +277,7 @@ const AddMovie = () => {
             <input
               className="btn bg-transparent hover:bg-transparent border-white text-white rounded-tl-lg hover:rounded-tl-none hover:rounded-tr-lg rounded-br-lg hover:rounded-br-none transition-all hover:rounded-bl-lg rounded-none w-40"
               type="submit"
-              value="Add Movie"
+              value="Update Movie"
             />
           </div>
         </div>
@@ -272,4 +286,4 @@ const AddMovie = () => {
   );
 };
 
-export default AddMovie;
+export default UpdateMovie;

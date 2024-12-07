@@ -8,7 +8,7 @@ const Login = () => {
   const { handelLogin, handelGoogleLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location.state);
+
   const handelSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -17,7 +17,12 @@ const Login = () => {
 
     handelLogin(email, password)
       .then((res) => {
-        navigate(location.state);
+        if(location.state){
+          navigate(location.state);
+        }
+        else{
+          navigate("/")
+        }
       })
       .catch((error) => {
         toast.error("Login Failed!");
@@ -25,7 +30,8 @@ const Login = () => {
   };
 
   const handelLoginWithGoogle = () => {
-    handelGoogleLogin().then((res) => {
+    handelGoogleLogin()
+    .then((res) => {
       if(location.state){
         navigate(location.state);
       }
@@ -40,7 +46,7 @@ const Login = () => {
       <div className="container mx-auto px-3">
         <div className="card bg-cyan-700 md:p-10 p-5 max-w-[650px] mx-auto">
           <h1 className="text-center text-white font-semibold text-2xl md:text-5xl mb-8">
-            Login
+            Login Form
           </h1>
           <form onSubmit={handelSubmit} className="px-3 text-white">
             <div className="form-control">
@@ -84,9 +90,9 @@ const Login = () => {
               </p>
             </div>
             <div className="my-3">
-              <h3 className="text-lg font-medium mb-3">Socail Link</h3>
+              {/* <h3 className="text-lg font-medium mb-3">Socail Link</h3> */}
               <Link onClick={handelLoginWithGoogle} className="text-base flex items-center gap-3">
-                Login With Google <FaGoogle  className="text-2xl"/>
+                Login With Google <FaGoogle  className="text-2xl text-red-400"/>
               </Link>
             </div>
             <div className="form-control mt-6">

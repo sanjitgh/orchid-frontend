@@ -1,12 +1,20 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { MdFavoriteBorder, MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../provaider/AuthProvaider";
+import { GrDocumentUpdate } from "react-icons/gr";
 
 const MovieDetails = () => {
   const { _id, image, title, genre, duration, rating, year, summery } =
     useLoaderData();
-    const navigate = useNavigate()
+    const user = useContext(AuthContext)
+    const navigate = useNavigate();
+    
+    const currentUserEmail = user?.user?.email;
+    const singleMovie = useLoaderData();
 
+   
   const handelDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -29,11 +37,25 @@ const MovieDetails = () => {
                 text: "The movie has been deleted successfully.",
                 icon: "success",
               });
-              navigate("/allmovies")
+              navigate("/allmovies");
             }
           });
       }
     });
+  };
+
+  const handelFavorite = (id) => {
+    fetch("http://localhost:5000/favoritemovie", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(singleMovie),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
@@ -67,7 +89,7 @@ const MovieDetails = () => {
                   </tr>
                   <tr className="border-none">
                     <th className="pl-0 py-0 font-medium text-lg w-[150px]">
-                      Ration :
+                      Rating :
                     </th>
                     <td className="text-base py-2">{rating}</td>
                   </tr>
@@ -88,8 +110,19 @@ const MovieDetails = () => {
             </p>
             <div className="flex items-center mt-8 gap-5">
               <div className="tooltip" data-tip="Add Favorite">
-                <Link className="btn bg-transparent hover:bg-transparent text-cyan-700 hover:border-cyan-800 border-cyan-700 text-2xl">
+                <Link
+                  onClick={() => handelFavorite(_id)}
+                  className="btn bg-transparent hover:bg-transparent text-cyan-700 hover:border-cyan-800 border-cyan-700 text-2xl"
+                >
                   <MdFavoriteBorder />
+                </Link>
+              </div>
+              <div className="tooltip" data-tip="Update">
+                <Link
+                  to={`/updatemovie/${_id}`}
+                  className="btn bg-transparent hover:bg-transparent text-cyan-700 hover:border-cyan-800 border-cyan-700 text-2xl"
+                >
+                  <GrDocumentUpdate />
                 </Link>
               </div>
               <div className="tooltip" data-tip="Delete">
