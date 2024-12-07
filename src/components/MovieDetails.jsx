@@ -1,20 +1,35 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { MdFavoriteBorder, MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../provaider/AuthProvaider";
 import { GrDocumentUpdate } from "react-icons/gr";
+import toast from "react-hot-toast";
+import { getAuth } from "firebase/auth";
 
 const MovieDetails = () => {
   const { _id, image, title, genre, duration, rating, year, summery } =
     useLoaderData();
-    const user = useContext(AuthContext)
-    const navigate = useNavigate();
-    
-    const currentUserEmail = user?.user?.email;
-    const singleMovie = useLoaderData();
+  const user = useContext(AuthContext);
+  const navigate = useNavigate();
 
-   
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const users = getAuth().currentUser;
+
+  const currentUserEmail = user?.user?.email;
+
+  const singleMovie = {
+    image,
+    title,
+    genre,
+    duration,
+    rating,
+    year,
+    summery,
+    currentUserEmail,
+  };
+
   const handelDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -44,7 +59,7 @@ const MovieDetails = () => {
     });
   };
 
-  const handelFavorite = (id) => {
+  const handelFavorite = () => {
     fetch("http://localhost:5000/favoritemovie", {
       method: "POST",
       headers: {
@@ -54,8 +69,14 @@ const MovieDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.insertedId) {
+          toast.success("Add to favorite list");
+        } else {
+          toast.error("Already added");
+        }
       });
+      ///
+      setIsDisabled(true); 
   };
 
   return (
@@ -110,12 +131,13 @@ const MovieDetails = () => {
             </p>
             <div className="flex items-center mt-8 gap-5">
               <div className="tooltip" data-tip="Add Favorite">
-                <Link
-                  onClick={() => handelFavorite(_id)}
+                <button
+                  onClick={handelFavorite}
+                  disabled={isDisabled}
                   className="btn bg-transparent hover:bg-transparent text-cyan-700 hover:border-cyan-800 border-cyan-700 text-2xl"
                 >
                   <MdFavoriteBorder />
-                </Link>
+                </button>
               </div>
               <div className="tooltip" data-tip="Update">
                 <Link
@@ -126,12 +148,12 @@ const MovieDetails = () => {
                 </Link>
               </div>
               <div className="tooltip" data-tip="Delete">
-                <Link
+                <button
                   onClick={() => handelDelete(_id)}
                   className="btn bg-red-500 hover:bg-red-600 text-white text-2xl"
                 >
                   <MdDeleteForever />
-                </Link>
+                </button>
               </div>
             </div>
           </div>

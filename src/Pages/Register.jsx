@@ -29,8 +29,12 @@ const Register = () => {
     }
 
     createUser(email, password)
+
       .then((res) => {
-        manageProfile(name, image).then((res) => {
+        
+        manageProfile(name, image)
+
+        .then((res) => {
           setUser({
             ...user,
             displayName: name,
@@ -44,6 +48,7 @@ const Register = () => {
           image,
           email,
         };
+
         // save user info to the database
         fetch("http://localhost:5000/users", {
           method: "POST",
@@ -59,6 +64,7 @@ const Register = () => {
 
         navigate("/");
       })
+
       .catch((error) => {
         console.log(error.message);
       });

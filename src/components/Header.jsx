@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provaider/AuthProvaider";
 import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const { handelLogout, user } = useContext(AuthContext);
+
   const links = (
     <>
       <NavLink
@@ -35,7 +36,7 @@ const Header = () => {
         className={({ isActive }) =>
           isActive ? "border-b-white border-b" : ""
         }
-        to={"/myfavorite"}
+        to={`/myfavorite/${user?.email}`}
       >
         My Favorite
       </NavLink>

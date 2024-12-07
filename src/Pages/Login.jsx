@@ -17,11 +17,10 @@ const Login = () => {
 
     handelLogin(email, password)
       .then((res) => {
-        if(location.state){
+        if (location.state) {
           navigate(location.state);
-        }
-        else{
-          navigate("/")
+        } else {
+          navigate("/");
         }
       })
       .catch((error) => {
@@ -29,14 +28,37 @@ const Login = () => {
       });
   };
 
+  //  google login
   const handelLoginWithGoogle = () => {
     handelGoogleLogin()
     .then((res) => {
-      if(location.state){
+      const name = res.user.displayName;
+      const image = res.user.photoURL;
+      const email = res.user.email;
+
+      const newUser = {
+        name,
+        image,
+        email,
+      };
+
+      // save user info to the database
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+
+      if (location.state) {
         navigate(location.state);
-      }
-      else{
-        navigate("/")
+      } else {
+        navigate("/");
       }
     });
   };
@@ -91,8 +113,11 @@ const Login = () => {
             </div>
             <div className="my-3">
               {/* <h3 className="text-lg font-medium mb-3">Socail Link</h3> */}
-              <Link onClick={handelLoginWithGoogle} className="text-base flex items-center gap-3">
-                Login With Google <FaGoogle  className="text-2xl text-red-400"/>
+              <Link
+                onClick={handelLoginWithGoogle}
+                className="text-base flex items-center gap-3"
+              >
+                Login With Google <FaGoogle className="text-2xl text-red-400" />
               </Link>
             </div>
             <div className="form-control mt-6">

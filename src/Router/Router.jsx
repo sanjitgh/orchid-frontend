@@ -51,9 +51,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myfavorite",
-        element: <MyFavorite></MyFavorite>,
-        loader: () => fetch("http://localhost:5000/favoritemovie"),
+        path: "/myfavorite/:email",
+        element: (
+          <PrivetRoute>
+            <MyFavorite></MyFavorite>
+          </PrivetRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/favoritemovie/${params.email}`),
       },
       {
         path: "/updatemovie/:id",
