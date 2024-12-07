@@ -29,12 +29,8 @@ const Register = () => {
     }
 
     createUser(email, password)
-
       .then((res) => {
-        
-        manageProfile(name, image)
-
-        .then((res) => {
+        manageProfile(name, image).then((res) => {
           setUser({
             ...user,
             displayName: name,
@@ -71,9 +67,9 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-cyan-50 py-20 min-h-[90vh] flex justify-center items-center">
+    <div className="bg-cyan-50 dark:bg-slate-800 py-20 min-h-[95vh] flex justify-center items-center">
       <div className="container mx-auto px-3">
-        <div className="card bg-cyan-700 md:p-10 p-5 max-w-[650px] mx-auto">
+        <div className="card bg-cyan-700 dark:bg-slate-700 md:p-10 p-5 max-w-[650px] mx-auto">
           <h1 className="text-center text-white font-semibold text-2xl md:text-5xl mb-8">
             Register
           </h1>
@@ -141,7 +137,7 @@ const Register = () => {
             </div>
 
             <div className="form-control mt-6">
-              <button className="btn bg-transparent border-white hover:bg-transparent text-white text-base font-medium">
+              <button className="btn bg-transparent border-white hover:bg-transparent hover:dark:border-slate-400 text-white text-base font-medium">
                 Register
               </button>
             </div>

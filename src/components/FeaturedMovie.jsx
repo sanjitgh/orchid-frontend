@@ -9,9 +9,9 @@ const FeaturedMovie = () => {
   const movies = useLoaderData();
   const sortedMovies = movies.sort((a, b) => b.rating - a.rating);
   return (
-    <div className="bg-cyan-50 py-20">
+    <div className="bg-cyan-50 dark:bg-slate-800 py-20">
       <div className="container mx-auto px-3">
-        <h1 className="font-bold text-2xl md:text-4xl text-cyan-700 border-b border-cyan-700 inline">
+        <h1 className="font-bold text-2xl md:text-4xl text-cyan-700 border-b dark:text-gray-200 border-cyan-700 inline">
           Featured Movies
         </h1>
 
@@ -24,30 +24,32 @@ const FeaturedMovie = () => {
                 alt=""
               />
               <div className="px-7 pb-7 flex flex-col gap-2">
-                <h1 className="font-medium text-xl pb-3">{movie.title}</h1>
-                <h1 className="font-medium text-base">
+                <h1 className="font-medium  text-xl pb-3 dark:text-slate-200">
+                  {movie.title}
+                </h1>
+                <h1 className="font-medium dark:text-slate-200  text-base">
                   Genre :
-                  <span className="badge bg-cyan-700 text-white p-3 ml-3">
+                  <span className="badge dark:bg-slate-600 bg-cyan-700 text-white p-3 ml-3">
                     {movie.genre}
                   </span>
                 </h1>
-                <h1 className="font-medium text-base">
+                <h1 className="font-medium dark:text-slate-200  text-base">
                   Duration :
-                  <span className="badge bg-cyan-700 text-white p-3 ml-3">
+                  <span className="badge dark:bg-slate-600 bg-cyan-700 text-white p-3 ml-3">
                     {movie.duration} minues
                   </span>
                 </h1>
-                <h1 className="font-medium text-base">
+                <h1 className="font-medium dark:text-slate-200  text-base">
                   Release Year :
-                  <span className="badge bg-cyan-700 text-white p-3 ml-3">
+                  <span className="badge dark:bg-slate-600 bg-cyan-700 text-white p-3 ml-3">
                     {movie.year}{" "}
                   </span>
                 </h1>
-                <h1 className="font-medium text-base">
+                <h1 className="font-medium dark:text-slate-200  text-base">
                   Rating :
                   <span className="relative left-1 top-1">
                     <Rating
-                      className="text-xl text-cyan-700"
+                      className="text-xl text-cyan-700 dark:text-slate-600"
                       initialRating={movie.rating}
                       emptySymbol={<FaRegStar />}
                       fullSymbol={<FaStar />}
@@ -57,7 +59,7 @@ const FeaturedMovie = () => {
                 </h1>
                 <Link
                   to={`/allmovies/moviedetails/${movie._id}`}
-                  className="btn mt-5 bg-cyan-700 hover:bg-cyan-800 text-white text-base"
+                  className="btn mt-5 dark:bg-slate-600 bg-cyan-700 hover:bg-cyan-800 text-white text-base"
                 >
                   See Details
                 </Link>
@@ -67,7 +69,7 @@ const FeaturedMovie = () => {
         </div>
         <div className="text-center col-span-3 mb-5 mt-10">
           <Link
-            className="btn mt-5 bg-transparent hover:bg-transparent text-cyan-700 shadow-[#38e8ff2e] shadow-xl text-base border-cyan-700"
+            className="btn mt-5 border-none bg-transparent hover:bg-transparent text-cyan-700 text-base "
             to={"/allmovies"}
           >
             See All Movies <FaArrowRightLong />

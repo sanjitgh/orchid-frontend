@@ -130,7 +130,7 @@ const UpdateMovie = () => {
       <div className="absolute inset-0 bg-black/90 flex items-center justify-center"></div>
       <form
         onSubmit={handelUpdateMovie}
-        className="w-[1000px] mx-auto px-3 bg-cyan-700 shadow-[#38e8ff4d] shadow-xl text-white rounded z-10 my-16"
+        className="w-[1000px] mx-auto px-3 bg-cyan-700 shadow-[#38e8ff4d] dark:bg-gray-700 dark:shadow-gray-700 shadow-xl text-white rounded z-10 my-16"
       >
         <h1 className="text-2xl md:text-5xl font-bold text-center pt-10 logo">
           Add Movie Here

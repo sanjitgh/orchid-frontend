@@ -48,22 +48,22 @@ const FavoriteMovieCard = ({ data }) => {
         alt=""
       />
       <div className="px-7 pb-7 flex flex-col gap-2">
-        <h1 className="font-medium text-xl pb-3">{title}</h1>
-        <h1 className="font-medium text-base">
+        <h1 className="font-medium dark:text-slate-200 text-xl pb-3">{title}</h1>
+        <h1 className="font-medium text-base dark:text-slate-200 ">
           Genre :
-          <span className="badge bg-cyan-700 text-white p-3 ml-3">{genre}</span>
+          <span className="badge dark:bg-gray-600  bg-cyan-700 text-white p-3 ml-3">{genre}</span>
         </h1>
-        <h1 className="font-medium text-base">
+        <h1 className="font-medium text-base dark:text-slate-200 ">
           Duration :
-          <span className="badge bg-cyan-700 text-white p-3 ml-3">
+          <span className="badge dark:bg-gray-600  bg-cyan-700 text-white p-3 ml-3">
             {duration} minues
           </span>
         </h1>
-        <h1 className="font-medium text-base">
+        <h1 className="font-medium text-base dark:text-slate-200 ">
           Release Year :
-          <span className="badge bg-cyan-700 text-white p-3 ml-3">{year} </span>
+          <span className="badge dark:bg-gray-600  bg-cyan-700 text-white p-3 ml-3">{year} </span>
         </h1>
-        <h1 className="font-medium text-base">
+        <h1 className="font-medium text-base dark:text-slate-200 ">
           Rating :
           <span className="relative left-1 top-1">
             <Rating
@@ -77,7 +77,7 @@ const FavoriteMovieCard = ({ data }) => {
         </h1>
         <button
           onClick={() => handelDelete(_id)}
-          className="btn mt-5 bg-red-700 hover:bg-red-800 text-white text-base"
+          className="btn mt-5 dark:bg-gray-600  bg-red-700 hover:bg-red-800 text-white text-base"
         >
           Remove
         </button>

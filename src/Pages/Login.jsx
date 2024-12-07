@@ -1,19 +1,23 @@
 import { useContext } from "react";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provaider/AuthProvaider";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const { handelLogin, handelGoogleLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
 
     handelLogin(email, password)
       .then((res) => {
@@ -24,14 +28,13 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        toast.error("Login Failed!");
+        toast.error("Invalid User!");
       });
   };
 
   //  google login
   const handelLoginWithGoogle = () => {
-    handelGoogleLogin()
-    .then((res) => {
+    handelGoogleLogin().then((res) => {
       const name = res.user.displayName;
       const image = res.user.photoURL;
       const email = res.user.email;
@@ -64,24 +67,23 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-cyan-50 py-20 min-h-[90vh] flex justify-center items-center">
+    <div className="bg-cyan-50 dark:bg-slate-800 py-20 min-h-[95vh] flex justify-center items-center">
       <div className="container mx-auto px-3">
-        <div className="card bg-cyan-700 md:p-10 p-5 max-w-[650px] mx-auto">
+        <div className="card bg-cyan-700 dark:bg-slate-700 md:p-10 p-5 max-w-[650px] mx-auto">
           <h1 className="text-center text-white font-semibold text-2xl md:text-5xl mb-8">
             Login Form
           </h1>
-          <form onSubmit={handelSubmit} className="px-3 text-white">
+          <form onSubmit={handleSubmit(onSubmit)} className="px-3 text-white">
             <div className="form-control">
               <label className="label">
                 <span className="text-white">Email</span>
               </label>
               <input
-                name="email"
+                {...register("email", { required: true })}
                 type="email"
                 autoComplete="off"
                 placeholder="email"
                 className="input input-bordered bg-transparent placeholder:text-gray-300 text-white"
-                required
               />
             </div>
             <div className="form-control">
@@ -89,14 +91,24 @@ const Login = () => {
                 <span className="text-white">Password</span>
               </label>
               <input
-                name="password"
+                {...register("password", {
+                  required: true,
+                  minLength: {
+                    value: 6,
+                    message: "Password length must be 6 character",
+                  },
+                })}
                 type="password"
                 autoComplete="off"
                 placeholder="password"
                 className="input input-bordered bg-transparent placeholder:text-gray-300 text-white"
-                required
               />
             </div>
+            {errors.password && (
+              <p className="text-red-500 mb-2 mt-3">
+                {errors.password.message}
+              </p>
+            )}
             <label className="label">
               <a href="#" className="text-white">
                 Forgot password?
@@ -121,7 +133,7 @@ const Login = () => {
               </Link>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-transparent border-white hover:bg-transparent text-white text-base font-medium">
+              <button className="btn bg-transparent border-white hover:bg-transparent hover:dark:border-slate-400 text-white text-base font-medium">
                 Login
               </button>
             </div>

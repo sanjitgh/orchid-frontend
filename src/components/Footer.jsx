@@ -3,7 +3,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="pt-20 pb-10 bg-cyan-700 text-white">
+    <footer className="pt-20 pb-10 bg-cyan-700 dark:bg-slate-700 text-white">
       <div className="container mx-auto px-3">
         <div className="footer text-white">
           <aside>

@@ -80,11 +80,11 @@ const MovieDetails = () => {
   };
 
   return (
-    <div className="py-14 bg-cyan-50">
+    <div className="py-14 bg-cyan-50 dark:bg-gray-700">
       <div className="container mx-auto px-3">
         <div className="text-end mb-14">
           <Link
-            className="border-b border-cyan-700 text-cyan-700 font-semibold"
+            className="border-b dark:text-slate-200 border-cyan-700 text-cyan-700 font-semibold"
             to={"/allmovies"}
           >
             SEE MOVIES
@@ -92,39 +92,39 @@ const MovieDetails = () => {
         </div>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <div>
-            <h1 className="font-semibold text-3xl mb-5">{title}</h1>
+            <h1 className="font-semibold dark:text-slate-200 text-3xl mb-5">{title}</h1>
             <div className="overflow-x-auto">
               <table className="table">
                 <tbody>
                   <tr className="border-none">
-                    <th className="pl-0 py-0 font-medium text-lg w-[150px]">
+                    <th className="pl-0 dark:text-slate-200 py-0 font-medium text-lg w-[150px]">
                       Duration :
                     </th>
-                    <td className="text-base py-2">{duration} minutes</td>
+                    <td className="text-base py-2 dark:text-slate-300">{duration} minutes</td>
                   </tr>
                   <tr className="border-none">
-                    <th className="pl-0 py-0 font-medium text-lg w-[150px]">
+                    <th className="pl-0 dark:text-slate-200 py-0 font-medium text-lg w-[150px]">
                       Genre :
                     </th>
-                    <td className="text-base py-2">{genre}</td>
+                    <td className="text-base py-2 dark:text-slate-300">{genre}</td>
                   </tr>
                   <tr className="border-none">
-                    <th className="pl-0 py-0 font-medium text-lg w-[150px]">
+                    <th className="pl-0 dark:text-slate-200 py-0 font-medium text-lg w-[150px]">
                       Rating :
                     </th>
-                    <td className="text-base py-2">{rating}</td>
+                    <td className="text-base py-2 dark:text-slate-300">{rating}</td>
                   </tr>
                   <tr className="border-none">
-                    <th className="pl-0 py-0 font-medium text-lg w-[150px]">
+                    <th className="pl-0 dark:text-slate-200 py-0 font-medium text-lg w-[150px]">
                       Release Year :
                     </th>
-                    <td className="text-base py-2">{year}</td>
+                    <td className="text-base py-2 dark:text-slate-300">{year}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <p className="text-base text-gray-600">
-              <span className="font-medium text-lg text-gray-800">
+            <p className="text-base text-gray-600 dark:text-slate-300">
+              <span className="font-medium  dark:text-slate-200 text-lg text-gray-800">
                 Description : <br />
               </span>
               {summery}

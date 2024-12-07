@@ -8,7 +8,7 @@ const PrivetRoute = ({ children }) => {
   const location = useLocation();
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-[650px]">
+      <div className="flex bg-cyan-50 justify-center items-center min-h-[95vh] dark:bg-gray-600">
         <CircleLoader 
         color={"#0E7490"}
          size={70} />

@@ -4,8 +4,11 @@ import { AuthContext } from "../provaider/AuthProvaider";
 import { FaUser } from "react-icons/fa";
 
 const Header = () => {
-  const { handelLogout, user } = useContext(AuthContext);
+  const { handelLogout, user, darkMood, setDarkMood } = useContext(AuthContext);
 
+  const handelDarkMode = () => {
+    setDarkMood(!darkMood);
+  };
   const links = (
     <>
       <NavLink
@@ -74,7 +77,7 @@ const Header = () => {
     </>
   );
   return (
-    <div className="navbar py-4 bg-cyan-700 text-white md:px-10">
+    <div className="navbar py-4 bg-cyan-700 dark:bg-slate-900/90 dark:backdrop-blur-lg text-white md:px-10 sticky top-0 z-[99]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -109,7 +112,12 @@ const Header = () => {
           {links}
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end gap-3 items-center">
+        <input
+          onClick={handelDarkMode}
+          type="checkbox"
+          className="toggle toggle-success"
+        />
         {user ? (
           <div className="relative text-2xl cursor-pointer group">
             <img
@@ -118,7 +126,7 @@ const Header = () => {
               alt="profile-photo"
             />
 
-            <div className="absolute bg-cyan-700 px-5 py-3 top-[60px] -right-8 w-56 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+            <div className="absolute bg-cyan-700 dark:bg-slate-700 px-5 py-3 top-[60px] -right-8 w-56 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <h2 className="text-lg font-medium mb-3">
                 {user && user?.displayName}
               </h2>

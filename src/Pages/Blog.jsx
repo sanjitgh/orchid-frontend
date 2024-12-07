@@ -3,9 +3,9 @@ import React from "react";
 const Blog = () => {
 
   return (
-    <div className="pb-20 pt-12 bg-cyan-50">
+    <div className="pb-20 pt-12 bg-cyan-50 dark:bg-slate-800">
       <div className="container mx-auto px-3">
-        <h1 className="text-center md:text-5xl text-2xl text-cyan-700 font-bold mb-10">
+        <h1 className="text-center md:text-5xl text-2xl text-cyan-700 font-bold mb-10 dark:text-gray-200">
           Blogs
         </h1>
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-14 gap-10">
@@ -22,14 +22,14 @@ const Blog = () => {
                 className="flex items-center gap-5 mb-3
               "
               >
-                <div className="badge badge-outline outline-cyan-700 p-3">
+                <div className="badge badge-outline dark:text-slate-200  outline-cyan-700 p-3">
                   News
                 </div>
                 <div>
-                  <p>Jul 5, 2024</p>
+                  <p className="dark:text-slate-200 ">Jul 5, 2024</p>
                 </div>
               </div>
-              <h2 className="card-title">
+              <h2 className="card-title dark:text-slate-200 ">
                 The Girl I Like Forgot Her Glasses Anime Comes Clear in Credit
                 less Opening and Ending Videos
               </h2>
@@ -48,14 +48,14 @@ const Blog = () => {
                 className="flex items-center gap-5 mb-3
               "
               >
-                <div className="badge badge-outline outline-cyan-700 p-3">
+                <div className="badge badge-outline dark:text-slate-200  outline-cyan-700 p-3">
                   News
                 </div>
                 <div>
-                  <p>Jul 5, 2024</p>
+                  <p className="dark:text-slate-200 ">Jul 5, 2024</p>
                 </div>
               </div>
-              <h2 className="card-title">
+              <h2 className="card-title dark:text-slate-200 ">
               The Girl I Like Forgot Her Glasses Anime Comes Clear in Credit less Opening and Ending Videos
               </h2>
             </div>
@@ -73,14 +73,14 @@ const Blog = () => {
                 className="flex items-center gap-5 mb-3
               "
               >
-                <div className="badge badge-outline outline-cyan-700 p-3">
+                <div className="badge badge-outline dark:text-slate-200  outline-cyan-700 p-3">
                   News
                 </div>
                 <div>
-                  <p>Jul 5, 2024</p>
+                  <p className="dark:text-slate-200 ">Jul 5, 2024</p>
                 </div>
               </div>
-              <h2 className="card-title">
+              <h2 className="card-title dark:text-slate-200 ">
               The Girl I Like Forgot Her Glasses Anime Comes Clear in Credit less Opening and Ending Videos
               </h2>
             </div>
@@ -98,14 +98,14 @@ const Blog = () => {
                 className="flex items-center gap-5 mb-3
               "
               >
-                <div className="badge badge-outline outline-cyan-700 p-3">
+                <div className="badge badge-outline dark:text-slate-200  outline-cyan-700 p-3">
                   News
                 </div>
                 <div>
-                  <p>Jul 5, 2024</p>
+                  <p className="dark:text-slate-200 ">Jul 5, 2024</p>
                 </div>
               </div>
-              <h2 className="card-title">
+              <h2 className="card-title dark:text-slate-200 ">
               Two New The Quintessential Quintuplets Side-Story Anime Illustrations Arrive Ahead of OVA Release This Friday
               </h2>
             </div>
@@ -123,14 +123,14 @@ const Blog = () => {
                 className="flex items-center gap-5 mb-3
               "
               >
-                <div className="badge badge-outline outline-cyan-700 p-3">
+                <div className="badge badge-outline dark:text-slate-200  outline-cyan-700 p-3">
                   News
                 </div>
                 <div>
-                  <p>Jul 5, 2024</p>
+                  <p className="dark:text-slate-200 ">Jul 5, 2024</p>
                 </div>
               </div>
-              <h2 className="card-title">
+              <h2 className="card-title dark:text-slate-200 ">
               hololive Indonesia Announces 3D Showcase for 2nd Generation Members
               </h2>
             </div>

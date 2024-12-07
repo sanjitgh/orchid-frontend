@@ -14,6 +14,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvaider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [darkMood, setDarkMood] = useState(false);
   const [loading, setLoading] = useState(true);
   const googleProvaider = new GoogleAuthProvider();
 
@@ -50,11 +51,12 @@ const AuthProvaider = ({ children }) => {
     handelLogout,
     user,
     setUser,
+    darkMood,
+    setDarkMood,
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-
       if (currentUser) {
         setUser(currentUser);
       } else {
