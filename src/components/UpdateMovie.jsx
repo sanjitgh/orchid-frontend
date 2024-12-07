@@ -103,7 +103,7 @@ const UpdateMovie = () => {
     };
 
     // send data mongodb
-    fetch(`http://localhost:5000/movies/${_id}`, {
+    fetch(`https://orchid-backend-server.vercel.app/movies/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

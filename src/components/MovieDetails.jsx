@@ -42,7 +42,7 @@ const MovieDetails = () => {
       confirmButtonText: "Confirem",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/movies/${id}`, {
+        fetch(`https://orchid-backend-server.vercel.app/movies/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -61,7 +61,7 @@ const MovieDetails = () => {
   };
 
   const handelFavorite = () => {
-    fetch("http://localhost:5000/favoritemovie", {
+    fetch("https://orchid-backend-server.vercel.app/favoritemovie", {
       method: "POST",
       headers: {
         "content-type": "application/json",

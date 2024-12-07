@@ -22,7 +22,7 @@ const FavoriteMovieCard = ({ data }) => {
       confirmButtonText: "Confirem",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/favoritemovie/${id}`, {
+        fetch(`https://orchid-backend-server.vercel.app/favoritemovie/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -12,7 +12,7 @@ const AllMovies = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/movies?searchParams=${search}`)
+    fetch(`https://orchid-backend-server.vercel.app/movies?searchParams=${search}`)
       .then((res) => res.json())
       .then((data) => {
         setMovieData(data);

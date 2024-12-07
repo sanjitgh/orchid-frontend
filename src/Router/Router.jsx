@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/movies"),
+        loader: () => fetch("https://orchid-backend-server.vercel.app/movies"),
       },
       {
         path: "/allmovies",
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             <AllMovies></AllMovies>
           </PrivetRoute>
         ),
-        loader: () => fetch("http://localhost:5000/movies"),
+        loader: () => fetch("https://orchid-backend-server.vercel.app/movies"),
       },
       {
         path: "/allmovies/moviedetails/:id",
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movies/${params.id}`),
+          fetch(`https://orchid-backend-server.vercel.app/movies/${params.id}`),
       },
       {
         path: "/addmovie",
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/favoritemovie/${params.email}`),
+          fetch(`https://orchid-backend-server.vercel.app/favoritemovie/${params.email}`),
       },
       {
         path: "/updatemovie/:id",
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movies/${params.id}`),
+          fetch(`https://orchid-backend-server.vercel.app/movies/${params.id}`),
       },
       {
         path: "/blog",
