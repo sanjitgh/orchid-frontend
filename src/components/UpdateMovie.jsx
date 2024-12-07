@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provaider/AuthProvaider";
@@ -7,8 +7,11 @@ import toast from "react-hot-toast";
 const UpdateMovie = () => {
   const { _id, image, title, genre, duration, year, rating, summery } =
     useLoaderData();
-    console.log(rating);
   const user = useContext(AuthContext);
+
+  useEffect(() => {
+    document.title = `${title} | Update`;
+  }, []);
 
   const handelUpdateMovie = (e) => {
     e.preventDefault();

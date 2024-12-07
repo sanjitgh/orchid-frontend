@@ -69,7 +69,7 @@ const FeaturedMovie = () => {
         </div>
         <div className="text-center col-span-3 mb-5 mt-10">
           <Link
-            className="btn mt-5 border-none bg-transparent hover:bg-transparent text-cyan-700 text-base "
+            className="btn mt-5 border-cyan-700 bg-transparent hover:bg-transparent text-cyan-700 text-base "
             to={"/allmovies"}
           >
             See All Movies <FaArrowRightLong />

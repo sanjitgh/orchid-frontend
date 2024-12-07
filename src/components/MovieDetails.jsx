@@ -1,7 +1,7 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { MdFavoriteBorder, MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provaider/AuthProvaider";
 import { GrDocumentUpdate } from "react-icons/gr";
 import toast from "react-hot-toast";
@@ -12,12 +12,13 @@ const MovieDetails = () => {
     useLoaderData();
   const user = useContext(AuthContext);
   const navigate = useNavigate();
-
   const [isDisabled, setIsDisabled] = useState(false);
-
   const users = getAuth().currentUser;
-
   const currentUserEmail = user?.user?.email;
+
+  useEffect(() => {
+    document.title = `${title}`;
+  }, []);
 
   const singleMovie = {
     image,
@@ -75,8 +76,8 @@ const MovieDetails = () => {
           toast.error("Already added");
         }
       });
-      ///
-      setIsDisabled(true); 
+    ///
+    setIsDisabled(true);
   };
 
   return (
@@ -92,7 +93,9 @@ const MovieDetails = () => {
         </div>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
           <div>
-            <h1 className="font-semibold dark:text-slate-200 text-3xl mb-5">{title}</h1>
+            <h1 className="font-semibold dark:text-slate-200 text-3xl mb-5">
+              {title}
+            </h1>
             <div className="overflow-x-auto">
               <table className="table">
                 <tbody>
@@ -100,25 +103,33 @@ const MovieDetails = () => {
                     <th className="pl-0 dark:text-slate-200 py-0 font-medium text-lg w-[150px]">
                       Duration :
                     </th>
-                    <td className="text-base py-2 dark:text-slate-300">{duration} minutes</td>
+                    <td className="text-base py-2 dark:text-slate-300">
+                      {duration} minutes
+                    </td>
                   </tr>
                   <tr className="border-none">
                     <th className="pl-0 dark:text-slate-200 py-0 font-medium text-lg w-[150px]">
                       Genre :
                     </th>
-                    <td className="text-base py-2 dark:text-slate-300">{genre}</td>
+                    <td className="text-base py-2 dark:text-slate-300">
+                      {genre}
+                    </td>
                   </tr>
                   <tr className="border-none">
                     <th className="pl-0 dark:text-slate-200 py-0 font-medium text-lg w-[150px]">
                       Rating :
                     </th>
-                    <td className="text-base py-2 dark:text-slate-300">{rating}</td>
+                    <td className="text-base py-2 dark:text-slate-300">
+                      {rating}
+                    </td>
                   </tr>
                   <tr className="border-none">
                     <th className="pl-0 dark:text-slate-200 py-0 font-medium text-lg w-[150px]">
                       Release Year :
                     </th>
-                    <td className="text-base py-2 dark:text-slate-300">{year}</td>
+                    <td className="text-base py-2 dark:text-slate-300">
+                      {year}
+                    </td>
                   </tr>
                 </tbody>
               </table>

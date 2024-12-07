@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Blog = () => {
+  useEffect(() => {
+    document.title = "Blog | Orchid";
+  }, []);
 
   return (
     <div className="pb-20 pt-12 bg-cyan-50 dark:bg-slate-800">
@@ -56,7 +59,8 @@ const Blog = () => {
                 </div>
               </div>
               <h2 className="card-title dark:text-slate-200 ">
-              The Girl I Like Forgot Her Glasses Anime Comes Clear in Credit less Opening and Ending Videos
+                The Girl I Like Forgot Her Glasses Anime Comes Clear in Credit
+                less Opening and Ending Videos
               </h2>
             </div>
           </div>
@@ -81,7 +85,8 @@ const Blog = () => {
                 </div>
               </div>
               <h2 className="card-title dark:text-slate-200 ">
-              The Girl I Like Forgot Her Glasses Anime Comes Clear in Credit less Opening and Ending Videos
+                The Girl I Like Forgot Her Glasses Anime Comes Clear in Credit
+                less Opening and Ending Videos
               </h2>
             </div>
           </div>
@@ -106,7 +111,8 @@ const Blog = () => {
                 </div>
               </div>
               <h2 className="card-title dark:text-slate-200 ">
-              Two New The Quintessential Quintuplets Side-Story Anime Illustrations Arrive Ahead of OVA Release This Friday
+                Two New The Quintessential Quintuplets Side-Story Anime
+                Illustrations Arrive Ahead of OVA Release This Friday
               </h2>
             </div>
           </div>
@@ -131,7 +137,8 @@ const Blog = () => {
                 </div>
               </div>
               <h2 className="card-title dark:text-slate-200 ">
-              hololive Indonesia Announces 3D Showcase for 2nd Generation Members
+                hololive Indonesia Announces 3D Showcase for 2nd Generation
+                Members
               </h2>
             </div>
           </div>

@@ -1,10 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provaider/AuthProvaider";
 
 const AddMovie = () => {
   const user = useContext(AuthContext)
+
+  useEffect(() => {
+    document.title = "Add Movie | Orchid";
+  }, []);
 
   const handelAddMovie = (e) => {
     e.preventDefault();

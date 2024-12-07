@@ -5,8 +5,11 @@ import MovieCard from "../components/MovieCard";
 const AllMovies = () => {
   const movies = useLoaderData();
   const [movieData, setMovieData] = useState(movies);
-
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    document.title = "All Movies | Orchid";
+  }, []);
 
   useEffect(() => {
     fetch(`http://localhost:5000/movies?searchParams=${search}`)
