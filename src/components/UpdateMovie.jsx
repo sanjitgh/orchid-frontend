@@ -136,11 +136,11 @@ const UpdateMovie = () => {
         className="w-[1000px] mx-auto px-3 bg-cyan-700 shadow-[#38e8ff4d] dark:bg-gray-700 dark:shadow-gray-700 shadow-xl text-white rounded z-10 my-16"
       >
         <h1 className="text-2xl md:text-5xl font-bold text-center pt-10 logo">
-          Add Movie Here
+          Update Movie Here
         </h1>
-        <div className="grid grid-cols-2 gap-5 p-10">
+        <div className="grid grid-cols-2 gap-5 md:p-10">
           {/* image link */}
-          <label className="form-control w-full">
+          <label className="form-control col-span-2 md:col-span-1 w-full">
             <div className="label">
               <span className="label-text text-white text-base">
                 Movie Poster
@@ -158,7 +158,7 @@ const UpdateMovie = () => {
           </label>
 
           {/* title */}
-          <label className="form-control w-full">
+          <label className="form-control col-span-2 md:col-span-1 w-full">
             <div className="label">
               <span className="label-text text-white text-base">
                 Movie Title
@@ -176,7 +176,7 @@ const UpdateMovie = () => {
           </label>
 
           {/* genre */}
-          <label className="form-control w-full">
+          <label className="form-control col-span-2 md:col-span-1 w-full">
             <div className="label">
               <span className="label-text text-white text-base">Genre</span>
             </div>
@@ -199,7 +199,7 @@ const UpdateMovie = () => {
           </label>
 
           {/* duration */}
-          <label className="form-control w-full">
+          <label className="form-control col-span-2 md:col-span-1 w-full">
             <div className="label">
               <span className="label-text text-white text-base">Duration</span>
             </div>
@@ -215,7 +215,7 @@ const UpdateMovie = () => {
           </label>
 
           {/* Release Year */}
-          <label className="form-control w-full">
+          <label className="form-control col-span-2 md:col-span-1 w-full">
             <div className="label">
               <span className="label-text text-white text-base">
                 Release Year
@@ -246,7 +246,7 @@ const UpdateMovie = () => {
           </label>
 
           {/* Rating  */}
-          <label className="form-control w-full">
+          <label className="form-control col-span-2 md:col-span-1 w-full">
             <div className="label">
               <span className="label-text text-white text-base">Rating</span>
             </div>
@@ -276,7 +276,7 @@ const UpdateMovie = () => {
           </label>
 
           {/* button */}
-          <div className="col-span-2 text-center">
+          <div className="col-span-2 text-center pb-5">
             <input
               className="btn bg-transparent hover:bg-transparent border-white text-white rounded-tl-lg hover:rounded-tl-none hover:rounded-tr-lg rounded-br-lg hover:rounded-br-none transition-all hover:rounded-bl-lg rounded-none w-40"
               type="submit"
