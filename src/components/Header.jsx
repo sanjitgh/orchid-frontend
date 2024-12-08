@@ -98,7 +98,7 @@ const Header = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-cyan-700 rounded-box mt-3 w-52 p-4 shadow z-20 gap-3"
+            className="menu menu-sm dropdown-content bg-cyan-700 dark:bg-slate-700 rounded-box mt-3 w-52 p-4 shadow z-20 gap-3"
           >
             {links}
           </ul>
@@ -123,10 +123,9 @@ const Header = () => {
             <img
               className="rounded-full w-10 h-10"
               src={user?.photoURL}
-              alt="profile-photo"
             />
 
-            <div className="absolute bg-cyan-700 dark:bg-slate-700 px-5 py-3 top-[60px] -right-8 w-56 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+            <div className="absolute bg-cyan-700 dark:bg-slate-700 px-5 py-3 top-[65px] sm:-right-8 right-0 w-56 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <h2 className="text-lg font-medium mb-3">
                 {user && user?.displayName}
               </h2>

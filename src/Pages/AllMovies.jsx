@@ -23,7 +23,7 @@ const AllMovies = () => {
     <div className="pb-20 pt-10 bg-cyan-50 dark:bg-gray-800">
       <div className="container mx-auto px-3 min-h-[95vh]">
         <div className="md:flex justify-between">
-          <h3 className="md:text-4xl text-2xl mb-8 font-semibold">
+          <h3 className="md:text-4xl text-3xl mb-7 dark:text-gray-400 font-semibold">
             All Movies
           </h3>
           <input
@@ -31,7 +31,7 @@ const AllMovies = () => {
             type="text"
             name="search"
             placeholder="Secrch"
-            className="input dark:text-slate-200 dark:border-slate-200 bg-transparent input-bordered w-[300px] mb-5 md:mb-0"
+            className="input dark:text-slate-200 dark:border-slate-200 bg-transparent input-bordered sm:w-[300px] w-full mb-5 md:mb-0"
           />
         </div>
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 ">

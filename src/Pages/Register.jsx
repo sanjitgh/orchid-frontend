@@ -55,14 +55,14 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
           });
 
         navigate("/");
       })
 
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 

@@ -10,9 +10,9 @@ const MyFavorite = () => {
   }, []);
 
   return (
-    <div className="py-20 bg-cyan-50 dark:bg-gray-800">
+    <div className="sm:py-20 py-10 bg-cyan-50 dark:bg-gray-800">
       <div className="container mx-auto px-3">
-        <h1 className="font-bold text-2xl md:text-5xl mb-10 text-center text-cyan-700 dark:text-gray-200">
+        <h1 className="font-bold text-3xl md:text-5xl mb-10 text-center text-cyan-700 dark:text-gray-200">
           Favorite Movie List
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

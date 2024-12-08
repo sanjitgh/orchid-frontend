@@ -30,7 +30,7 @@ const FavoriteMovieCard = ({ data }) => {
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
-                text: "The movie has been deleted successfully.",
+                text: "The movie has been remove successfully.",
                 icon: "success",
               });
               navigate(`/myfavorite/${user?.email}`);
