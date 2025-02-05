@@ -45,3 +45,8 @@ To set up Orchid locally, follow these steps:
    ```bash
    git clone https://github.com/sanjitgh/orchid-backend.git
    cd orchid
+
+
+### Live Link:
+
+https://orchid-56904.web.app/
