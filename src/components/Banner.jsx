@@ -14,7 +14,7 @@ const Banner = () => {
     <>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide>
-          <div className="bg-[url('https://i.ibb.co.com/VMNFRq9/71-AX0-J-Iq-L.jpg')] bg-center bg-cover bg-no-repeat min-h-[800px] relative flex justify-center items-center">
+          <div className="bg-[url('https://i.ibb.co.com/VMNFRq9/71-AX0-J-Iq-L.jpg')] bg-center bg-cover bg-no-repeat min-h-[calc(100vh-72px)] relative flex justify-center items-center">
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
             <div className="z-10 text-white dark:text-gray-200 text-center">
               <h1 className="font-bold md:text-5xl text-2xl mb-5">
@@ -29,7 +29,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="bg-[url('https://i.ibb.co.com/mFfjxD8/3-JCa-Eki-Sw-WKAwg-LMjp-Ch-F3-1200-80.jpg')] bg-center bg-cover bg-no-repeat min-h-[800px] relative flex justify-center items-center">
+          <div className="bg-[url('https://i.ibb.co.com/mFfjxD8/3-JCa-Eki-Sw-WKAwg-LMjp-Ch-F3-1200-80.jpg')] bg-center bg-cover bg-no-repeat min-h-[calc(100vh-72px)] relative flex justify-center items-center">
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
             <div className="z-10 text-white dark:text-gray-200 text-center">
               <h1 className="font-bold md:text-5xl text-2xl mb-5">
@@ -44,7 +44,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="bg-[url('https://i.ibb.co.com/9YkqMjJ/fast-x-poster-header.jpg')] bg-center bg-cover bg-no-repeat min-h-[800px] relative flex justify-center items-center">
+          <div className="bg-[url('https://i.ibb.co.com/9YkqMjJ/fast-x-poster-header.jpg')] bg-center bg-cover bg-no-repeat min-h-[calc(100vh-72px)] relative flex justify-center items-center">
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
             <div className="z-10 text-white dark:text-gray-200 text-center">
               <h1 className="font-bold md:text-5xl text-2xl mb-5">Fast X</h1>
